@@ -1,11 +1,14 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View, ListView, CreateView, DetailView, DeleteView
 
 
-class MainPageView(TemplateView):
+class IndexView(TemplateView):
     template_name = 'mainapp/index.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['x'] = 'Передача контекстом' # пеерменная в шаблоне <p>{{ x }}</p>
-        return context
+class My_pageView(TemplateView):
+    template_name = 'mainapp/im.html'
+
+class ContactsView(TemplateView):
+    template_name = 'mainapp/contacts.html'
+
+
+

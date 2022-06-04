@@ -1,23 +1,20 @@
-import os
 from pathlib import Path
+import os
+os.environ.get('SECRET_KEY')
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_URL = os.path.join(BASE_DIR, 'static/')
 
-
-
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
-if DEBUG:
-    ALLOWED_HOSTS = ['*']
-else:
-    ALLOWED_HOSTS = [
 
-    ]
+DEBUG = True
+
+ALLOWED_HOSTS = ['*']
+
+
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,8 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainapp.apps.MainappConfig',
-    'authapp.apps.AuthappConfig',
+    'authorisation',
+    'mainapp',
 ]
 
 MIDDLEWARE = [
@@ -45,7 +42,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +64,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -95,4 +93,12 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATIC_URL = os.path.join(BASE_DIR, '/static/')
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
